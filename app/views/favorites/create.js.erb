@@ -1,0 +1,1 @@
+$('.table__favorite--'+<%= @favorite.book_id %>).html("<%= j(render 'favorites/book',  book: @favorite.book, user: @favorite.user ) %>")

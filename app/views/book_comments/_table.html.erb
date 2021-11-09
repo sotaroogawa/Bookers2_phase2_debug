@@ -1,0 +1,9 @@
+<table>
+  <% book_comments.each do |comment| %>
+    <tr>
+      <td><%= attachment_image_tag(comment.user, :profile_image, size: "100x100", fallback: "no-image-icon.jpg") %></td>
+      <td><%= comment.body %></td>
+      <td><%= link_to "削除", book_comment_path(comment), method: :delete, class: "btn btn-danger", remote: true %></td>
+    </tr>
+  <% end %>
+</table>
