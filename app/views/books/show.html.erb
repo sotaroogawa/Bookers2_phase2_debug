@@ -5,15 +5,12 @@
     <h2>New book</h2>
     <%= render 'form', book: Book.new %>
   </div>
-
-
   <div class='col-xs-9'>
 		<h2>Book detail</h2>
     <div class="detail__table">
       <%= render 'detail', book: @book %>
     </div>
-
-     <%= form_with(model: [@book, @comment]) do |f|%>
+     <%= form_with model: [@book, @comment] do |f|%>
       <%= f.text_area :body, id: "comment__textarea" %>
       <%= f.submit "送信", class: "btn btn-primary" %>
     <% end %>

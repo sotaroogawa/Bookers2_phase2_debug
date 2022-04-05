@@ -12,12 +12,12 @@ class User < ApplicationRecord
 
    # フォローしている側のUserから見て、フォローされている側のUserを(中間テーブルを介して)集める。参照するカラムは 'follower_id(フォローする側)
   has_many :relationships, class_name: 'Relationship',foreign_key: "follower_id"
-   #中間テーブル(relationships)を介して「followee」モデルのUser(フォローされた側)「follow_id」を集めることを「followings」と定義
+   #一覧画面で使う中間テーブル(relationships)を介して「followee」モデルのUser(フォローされた側)「follow_id」を集めることを「followings」と定義
   has_many :followings, through: :relationships, source: :followee
 
   # フォローされている側のUserから見て、フォローしてくる側のUserを(中間テーブルを介して)集める。参照するカラムは’followee_id’(フォローされる側)
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'followee_id'
-  #中間テーブル(relationships)を介して「user」モデルのUser(フォローする側)「follower_id」を集めることを「followers」と定義
+  #一覧画面で使う中間テーブル(relationships)を介して「user」モデルのUser(フォローする側)「follower_id」を集めることを「followers」と定義
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
  #フォローしているか判定
